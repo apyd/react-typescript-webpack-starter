@@ -1,13 +1,9 @@
-const webpack = require('webpack');
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+import { Configuration } from 'webpack'
+import path from 'path'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
-module.exports = {
-  entry: path.resolve(__dirname, './src/index.js'),
-  devServer: {
-    static: './dist',
-    hot: true
-  },
+const config: Configuration = {
+  entry: path.resolve(__dirname, './src/index.tsx'),
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './public/index.html'),
@@ -19,6 +15,11 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         use: 'babel-loader',
+        exclude: [/node_modules/]
+      },
+      {
+        test: /\.(ts|tsx)$/,
+        use: 'ts-loader',
         exclude: [/node_modules/]
       },
       {
@@ -36,7 +37,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
+    extensions: ['*', '.ts', '.js', '.tsx', '.jsx'],
   },
   output: {
     filename: 'bundle.js',
@@ -44,3 +45,5 @@ module.exports = {
     clean: true
   },
 }
+
+export default config;
