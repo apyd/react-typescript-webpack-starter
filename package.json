@@ -4,10 +4,8 @@
   "description": "webpack setup for react+typescript projects",
   "main": "index.js",
   "scripts": {
-    "start": "webpack",
-    "dev": "webpack-dev-server --mode=development",
-    "prod": "webpack --mode=production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --mode=development",
+    "build": "webpack --mode=production"
   },
   "keywords": [
     "react",
