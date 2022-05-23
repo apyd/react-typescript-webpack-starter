@@ -1,12 +1,22 @@
-import { Configuration } from 'webpack'
 import path from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import { Configuration } from 'webpack'
+//to resolve typescript issues when using devServer we need to import webpack-dev-server
+import 'webpack-dev-server';
+
+let mode: Configuration["mode"] = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
 const config: Configuration = {
+  mode: mode,
   entry: path.resolve(__dirname, './src/index.tsx'),
+  devtool: 'source-map',
+  devServer: {
+    static: './dist',
+    port: 4000
+  },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './public/index.html'),
+      template: path.resolve(__dirname, './dist/index.html'),
       filename: 'index.html'
     })
   ],
