@@ -1,18 +1,22 @@
 import path from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { Configuration } from 'webpack'
-//to resolve typescript issues when using devServer we need to import webpack-dev-server
+//To resolve typescript issues when using devServer we need to import webpack-dev-server
 import 'webpack-dev-server';
 
 let mode: Configuration["mode"] = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+// fix for HMR when using postcss and browserlist
+let target = mode === 'production' ? 'browserslist' : 'web'
 
 const config: Configuration = {
   mode: mode,
+  target: target,
   entry: path.resolve(__dirname, './src/index.tsx'),
   devtool: 'source-map',
   devServer: {
     static: './dist',
-    port: 4000
+    port: 4000,
+    hot: true
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -33,8 +37,8 @@ const config: Configuration = {
         exclude: [/node_modules/]
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        test: /\.(s[a|c]|c)ss$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
@@ -47,7 +51,7 @@ const config: Configuration = {
     ]
   },
   resolve: {
-    extensions: ['*', '.ts', '.js', '.tsx', '.jsx'],
+    extensions: ['.ts', '.js', '.tsx', '.jsx'],
   },
   output: {
     filename: 'bundle.js',
