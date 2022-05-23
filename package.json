@@ -1,19 +1,11 @@
 {
-  "name": "react-typescript-webpack-starter",
-  "version": "1.0.0",
-  "description": "webpack setup for react+typescript projects",
-  "main": "index.ts",
+  "private": true,
   "scripts": {
-    "start": "webpack-dev-server --mode=development",
-    "build": "webpack --mode=production"
+    "start": "webpack serve",
+    "watch": "webpack --watch",
+    "build": "NODE_ENV=production webpack",
+    "build-dev": "webpack"
   },
-  "keywords": [
-    "react",
-    "typescript",
-    "webpack"
-  ],
-  "author": "Artur Pydych",
-  "license": "MIT",
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
