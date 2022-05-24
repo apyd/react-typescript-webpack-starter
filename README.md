@@ -15,9 +15,9 @@ https://github.com/apyd/react-typescript-webpack-starter.git
 ## Scripts
 
 ```json
-# starts project using dev environment
+# starts project using development mode
 "start": "webpack serve",
-# starts project using dev environment in watch mode
+# starts project using development and watch modes
 "watch": "webpack --watch",
 # builds project using production mode
 "build": "NODE_ENV=production webpack",
