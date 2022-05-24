@@ -42,11 +42,11 @@ const config: Configuration = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
-        use: 'asset/resource'
+        type: 'asset/resource'
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: 'asset/resource'
+        type: 'asset/resource'
       }
     ]
   },
