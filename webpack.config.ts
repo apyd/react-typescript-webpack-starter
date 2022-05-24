@@ -20,7 +20,7 @@ const config: Configuration = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './dist/index.html'),
+      template: path.resolve(__dirname, './public/index.html'),
       filename: 'index.html'
     })
   ],
@@ -54,8 +54,9 @@ const config: Configuration = {
     extensions: ['.ts', '.js', '.tsx', '.jsx'],
   },
   output: {
-    filename: 'bundle.js',
+    filename: '[chunkhash].bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    assetModuleFilename: "images/[hash][ext][query]",
     clean: true
   },
 }
