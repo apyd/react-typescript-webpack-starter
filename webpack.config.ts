@@ -4,13 +4,13 @@ import { Configuration } from 'webpack'
 //To resolve typescript issues when using devServer we need to import webpack-dev-server
 import 'webpack-dev-server';
 
-let mode: Configuration["mode"] = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+const mode: Configuration["mode"] = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 // fix for HMR when using postcss and browserlist
-let target = mode === 'production' ? 'browserslist' : 'web'
+const target = mode === 'production' ? 'browserslist' : 'web'
 
 const config: Configuration = {
-  mode: mode,
-  target: target,
+  mode,
+  target,
   entry: path.resolve(__dirname, './src/index.tsx'),
   devtool: 'source-map',
   devServer: {
