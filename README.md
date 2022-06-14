@@ -1,1 +1,1 @@
-#README
+Webpack boilerplate for React + Typescript projects
